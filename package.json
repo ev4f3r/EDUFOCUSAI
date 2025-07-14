@@ -1,0 +1,28 @@
+{
+  "name": "edufocus-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page do EduFocusAI - Aprendizado Personalizado para Estudantes com TDAH",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Build completed'",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "education",
+    "ADHD",
+    "learning",
+    "AI",
+    "personalized-learning",
+    "landing-page"
+  ],
+  "author": "EduFocusAI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/edufocus-landing-page"
+  },
+  "homepage": "https://edufocus-landing-page.vercel.app",
+  "devDependencies": {},
+  "dependencies": {}
+} 

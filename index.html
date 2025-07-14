@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduFocusAI - Aprendizado Personalizado para Estudantes com TDAH</title>
+<meta name="description" content="EduFocusAI capacita educadores a adaptar conteúdo para estudantes com TDAH, promovendo um ambiente de aprendizado inclusivo e envolvente. Economize 70% do tempo com ferramentas automatizadas."/>
+<meta name="keywords" content="educação, TDAH, aprendizado personalizado, IA educacional, ferramentas pedagógicas, inclusão educacional"/>
+<meta name="author" content="EduFocusAI Team"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#8B5CF6"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://edufocus-landing-page.vercel.app/"/>
+<meta property="og:title" content="EduFocusAI - Aprendizado Personalizado para Estudantes com TDAH"/>
+<meta property="og:description" content="Capacite educadores a adaptar conteúdo para estudantes com TDAH. Economize 70% do tempo com ferramentas automatizadas e promova um ambiente de aprendizado inclusivo."/>
+<meta property="og:image" content="https://edufocus-landing-page.vercel.app/og-image.png"/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:url" content="https://edufocus-landing-page.vercel.app/"/>
+<meta property="twitter:title" content="EduFocusAI - Aprendizado Personalizado para Estudantes com TDAH"/>
+<meta property="twitter:description" content="Capacite educadores a adaptar conteúdo para estudantes com TDAH. Economize 70% do tempo com ferramentas automatizadas."/>
+<meta property="twitter:image" content="https://edufocus-landing-page.vercel.app/og-image.png"/>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238B5CF6'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-5l-3.75 3.75-1.41-1.41L9.59 12 5.34 7.75l1.41-1.41L10.5 10.59v-5H13v5l3.75-3.75 1.41 1.41L14.41 12l4.25 4.25-1.41 1.41L13 13.41v5h-2.5z'/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238B5CF6'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-5l-3.75 3.75-1.41-1.41L9.59 12 5.34 7.75l1.41-1.41L10.5 10.59v-5H13v5l3.75-3.75 1.41 1.41L14.41 12l4.25 4.25-1.41 1.41L13 13.41v5h-2.5z'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-color: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary-color: #06B6D4;
+            --background-color: #F8FAFC;
+            --background-secondary: #E2E8F0;
+            --text-primary: #000000;
+            --text-secondary: #374151;
+            --text-medium: #6B7280;
+            --accent-color: #F59E0B;
+            --accent-pink: #EC4899;
+            --accent-lime: #84CC16;
+            --white: #FFFFFF;
+            --light-gray: #F3F4F6;
+            --border-gray: #E5E7EB;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            @apply bg-[var(--background-color)] text-[var(--text-primary)];
+        }
+        .main-container {
+            @apply container mx-auto px-4 py-8;
+        }
+        .card {
+            @apply bg-[var(--white)] rounded-2xl shadow-md p-6 border-none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .button_primary {
+            @apply bg-[var(--primary-color)] text-white rounded-3xl px-6 py-3 font-semibold border-none cursor-pointer;
+            transition: all 0.2s ease;
+        }
+        .button_primary:hover {
+            @apply bg-[var(--primary-dark)];
+        }
+        .button_secondary {
+            @apply bg-[var(--light-gray)] text-[var(--text-secondary)] rounded-3xl px-6 py-3 font-semibold border-none cursor-pointer;
+            transition: all 0.2s ease;
+        }
+        .button_secondary:hover {
+            @apply bg-[var(--border-gray)];
+        }
+        .input {
+            @apply bg-[var(--white)] border border-[var(--border-gray)] rounded-xl px-4 py-3;
+            transition: all 0.2s ease;
+        }
+        .input:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+            border-color: var(--primary-color);
+        }
+        .typography_h1 {
+            @apply text-4xl font-bold text-[var(--text-primary)];
+            line-height: 1.2;
+        }
+        .typography_h2 {
+            @apply text-3xl font-semibold text-[var(--text-primary)];
+            line-height: 1.2;
+        }
+        .typography_h3 {
+            @apply text-2xl font-semibold text-[var(--text-primary)];
+            line-height: 1.2;
+        }
+        .typography_body {
+            @apply text-base text-[var(--text-secondary)];
+            line-height: 1.5;
+        }
+        .hero_section {
+            @apply relative bg-cover bg-center h-96 flex items-center justify-center text-white rounded-3xl overflow-hidden;
+        }
+        .hero_overlay {
+            @apply absolute inset-0 bg-black opacity-50;
+        }
+        .hero_content {
+            @apply relative z-10 text-center;
+        }
+        .feature_card {
+            @apply bg-[var(--white)] rounded-2xl shadow-md p-6 flex items-center space-x-4;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+        .feature_icon {
+            @apply text-[var(--primary-color)] text-3xl;
+        }
+        .feature_text {
+            @apply text-[var(--text-secondary)];
+            line-height: 1.5;
+        }
+        .footer {
+            @apply bg-[var(--light-gray)] py-6 text-center text-[var(--text-secondary)] rounded-2xl;
+        }
+        
+        .gradient-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .accent-button {
+            @apply bg-[var(--accent-color)] text-white rounded-3xl px-6 py-3 font-semibold border-none cursor-pointer;
+            transition: all 0.2s ease;
+        }
+        .accent-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .metric-card {
+            @apply flex items-center gap-2 p-4 bg-[var(--white)] rounded-xl border border-[var(--border-gray)];
+        }
+        
+        .badge {
+            @apply px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1;
+        }
+        
+        .badge-success {
+            @apply bg-green-100 text-green-800;
+        }
+        
+        .badge-info {
+            @apply bg-blue-100 text-blue-800;
+        }
+        
+        .badge-warning {
+            @apply bg-yellow-100 text-yellow-800;
+        }
+    </style>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-[var(--background-color)] group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="sticky top-0 z-50 bg-[var(--background-color)]/90 backdrop-blur-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--border-gray)] px-10 py-4">
+<div class="flex items-center gap-4 text-[var(--text-primary)]">
+<div class="size-8 text-[var(--primary-color)]">
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-5l-3.75 3.75-1.41-1.41L9.59 12 5.34 7.75l1.41-1.41L10.5 10.59v-5H13v5l3.75-3.75 1.41 1.41L14.41 12l4.25 4.25-1.41 1.41L13 13.41v5h-2.5z"></path>
+</svg>
+</div>
+<h2 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-[-0.015em]">EduFocusAI</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Início</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Recursos</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Preços</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Contato</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="button_primary">
+<span class="truncate">Começar</span>
+</button>
+<button class="p-2 md:hidden">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="main-container">
+<section class="relative h-[600px] rounded-3xl overflow-hidden flex items-center justify-center text-center text-white -mt-8">
+<video autoplay="" class="absolute z-0 w-auto min-w-full min-h-full max-w-none" loop="" muted="">
+<source src="https://storage.googleapis.com/stitch-assets/videos/people-in-a-library.mp4" type="video/mp4"/>
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 hero_overlay"></div>
+<div class="hero_content p-4">
+<h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 drop-shadow-lg">
+                            Aprendizado Personalizado para Cada Estudante
+                        </h1>
+<p class="text-base md:text-xl font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-md mb-6">
+                            EduFocusAI capacita educadores a adaptar conteúdo para estudantes com TDAH, promovendo um ambiente de aprendizado inclusivo e envolvente.
+                        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="button_primary px-8 py-3 text-lg">
+<span class="truncate">Solicitar Demonstração</span>
+</button>
+<button class="button_secondary px-8 py-3 text-lg">
+<span class="truncate">Ver Recursos</span>
+</button>
+</div>
+</div>
+</section>
+<section class="py-20">
+<div class="text-center mb-12">
+<h2 class="typography_h2 max-w-2xl mx-auto">Capacitando Professores, Engajando Estudantes</h2>
+<p class="typography_body max-w-3xl mx-auto mt-4">
+                            EduFocusAI transforma o ensino fornecendo ferramentas que economizam tempo, automatizam tarefas e criam uma sala de aula mais inclusiva.
+                        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="card text-center items-center flex flex-col">
+<div class="feature_icon mb-4">
+<svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"></path></svg>
+</div>
+<h3 class="typography_h3 text-xl mb-2">Economize Tempo na Adaptação de Conteúdo</h3>
+<div class="mb-3">
+<span class="badge badge-success">✓ Economia de 70%</span>
+</div>
+<p class="feature_text">Adapte rapidamente materiais existentes para diferentes estilos de aprendizagem, reduzindo o tempo de preparação.</p>
+</div>
+<div class="card text-center items-center flex flex-col">
+<div class="feature_icon mb-4">
+<svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg>
+</div>
+<h3 class="typography_h3 text-xl mb-2">Questionários e Avaliações Automatizadas</h3>
+<div class="mb-3">
+<span class="badge badge-info">⚡ Feedback Instantâneo</span>
+</div>
+<p class="feature_text">Gere questionários e avaliações personalizadas para as necessidades individuais dos estudantes, com feedback instantâneo.</p>
+</div>
+<div class="card text-center items-center flex flex-col">
+<div class="feature_icon mb-4">
+<svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176Z"></path></svg>
+</div>
+<h3 class="typography_h3 text-xl mb-2">Acompanhe o Progresso dos Estudantes Facilmente</h3>
+<div class="mb-3">
+<span class="badge badge-warning">📊 Dados em Tempo Real</span>
+</div>
+<p class="feature_text">Monitore o engajamento e progresso dos estudantes com painéis intuitivos, permitindo intervenções oportunas.</p>
+</div>
+</div>
+</section>
+
+<section class="py-16">
+<div class="text-center mb-12">
+<h2 class="typography_h2 mb-4">Resultados Comprovados</h2>
+<p class="typography_body">Números que demonstram o impacto do EduFocusAI</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="metric-card">
+<div class="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">85%</div>
+<div>
+<div class="text-xl font-bold text-[var(--text-primary)]">Melhoria</div>
+<div class="text-sm text-[var(--text-secondary)]">no engajamento</div>
+</div>
+</div>
+<div class="metric-card">
+<div class="w-12 h-12 bg-[var(--secondary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">70%</div>
+<div>
+<div class="text-xl font-bold text-[var(--text-primary)]">Economia</div>
+<div class="text-sm text-[var(--text-secondary)]">de tempo</div>
+</div>
+</div>
+<div class="metric-card">
+<div class="w-12 h-12 bg-[var(--accent-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">50+</div>
+<div>
+<div class="text-xl font-bold text-[var(--text-primary)]">Escolas</div>
+<div class="text-sm text-[var(--text-secondary)]">utilizando</div>
+</div>
+</div>
+<div class="metric-card">
+<div class="w-12 h-12 bg-[var(--accent-pink)] rounded-full flex items-center justify-center text-white text-xl font-bold">95%</div>
+<div>
+<div class="text-xl font-bold text-[var(--text-primary)]">Satisfação</div>
+<div class="text-sm text-[var(--text-secondary)]">dos usuários</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-[var(--background-secondary)] rounded-3xl">
+<div class="text-center mb-12 px-4">
+<h2 class="typography_h2 max-w-2xl mx-auto">Benefícios para Todos</h2>
+<p class="typography_body max-w-3xl mx-auto mt-4">
+                            EduFocusAI aprimora a experiência educacional para professores, estudantes e instituições, criando um ecossistema de aprendizado mais colaborativo e eficaz.
+                        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+<div class="flex flex-col gap-4">
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgPNipdNk6OZzXXMUyr02S2kAlWft28K5_-xuCqD08RqvcQ-EfvVRh0f7hygIADlO_V2MzykDEH63h6T7rPUHt9dXsnOD2HnKoUSYX88LMbHKg5u8y1oP2BMIO7cf6KFAy3J8Z0TIzU9Bo5UtMyRaJA9y1fvA_Mv-hrJm43xz5BB9QEaYdmljTtixXA5zMs9e9FAXDBGy8VyWK2PlshDalqI3y-jUAxm-cTb2wIxKMNvoii4BgwUJHBjsPIPpA0L27gCOl7pMheE8");'></div>
+<div>
+<h3 class="text-lg font-bold">Para Professores: Eficiência e Percepção</h3>
+<p class="typography_body mt-1">Reduza a carga de trabalho com ferramentas automatizadas de adaptação de conteúdo e avaliação. Obtenha insights mais profundos sobre o progresso dos estudantes e personalize intervenções de forma eficaz.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY6tRQCo6kx8KiaTg9F8-9pAcoiPX06t1Q_Vanu40sEJiM2wpPIojlCDjPxEO9t1kwrXF62YqilQ0ScgtuL4xvpWBN7NYmZDcnQaXX4Cqy8WIwfor3G0hhIJ09NXHcKgEeubyjH0yWyudUoOr2l4QDKHpj9MB1k8rI-vKG3CBjDxS3VxAYxPtGG2AxG5C0LS3LD2oh8b6pJnZhGe0r19W1sF_Xqz0Lqfc2tmXAEwFO2IoAZMWricYzdqQd6aozJV609d-OsYns4H4");'></div>
+<div>
+<h3 class="text-lg font-bold">Para Estudantes: Engajamento e Acessibilidade</h3>
+<p class="typography_body mt-1">Crie experiências de aprendizado envolventes e acessíveis que atendam às necessidades diversas. Promova um senso de realização e aumente a confiança dos estudantes.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD2nv8fn1DQGzB_OgQ6jPsmbQa9P4IC6VxapXtwA4Bj1H60t_a9qCnlJ74t-gFXaqLLmUwgZi9dETu2_-kQ4E-2vu7Hc2wrFRm8Sh9L-psp8Z3JahCeI7psmuQEolhuZdzyl98rXUlRz-5V_53pDRxDoapGYWJar3ghQ1F2HgqcOuQMj6dz8jll6GLn10lo4eZmlZn7rao-O5L4XByDNzMqwrJBza2MS5Y2z__fqpCjYk05-MWfrok6E_UBg1rQMlPITvIAmCbDQE");'></div>
+<div>
+<h3 class="text-lg font-bold">Para Instituições: Educação Inclusiva</h3>
+<p class="typography_body mt-1">Promova práticas de educação inclusiva e demonstre compromisso com o sucesso dos estudantes. Melhore a reputação institucional e atraia uma gama mais ampla de estudantes.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 text-center">
+<h2 class="typography_h2 max-w-2xl mx-auto">Transforme Sua Sala de Aula Hoje</h2>
+<p class="typography_body max-w-3xl mx-auto mt-4 mb-8">
+                        Junte-se ao EduFocusAI e crie um ambiente de aprendizado onde cada estudante pode prosperar.
+                    </p>
+<button class="button_primary px-10 py-4 text-xl">
+<span class="truncate">Comece Gratuitamente</span>
+</button>
+</section>
+</main>
+<footer class="footer mt-16">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Política de Privacidade</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Termos de Serviço</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Fale Conosco</a>
+</div>
+<p class="text-[var(--text-secondary)] text-sm">© 2024 EduFocusAI. Todos os direitos reservados.</p>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+</body></html> 
