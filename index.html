@@ -57,25 +57,79 @@
         .card {
             @apply bg-[var(--white)] rounded-2xl shadow-md p-6 border-none;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .feature_icon {
+            @apply text-[var(--primary-color)] text-3xl;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .card:hover .feature_icon {
+            transform: scale(1.1) rotate(5deg);
         }
         .button_primary {
             @apply bg-[var(--primary-color)] text-white rounded-3xl px-6 py-3 font-semibold border-none cursor-pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .button_primary:hover {
             @apply bg-[var(--primary-dark)];
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .button_primary:active {
+            transform: translateY(0);
+        }
+        .button_primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .button_primary:hover::before {
+            left: 100%;
         }
         .button_secondary {
             @apply bg-[var(--light-gray)] text-[var(--text-secondary)] rounded-3xl px-6 py-3 font-semibold border-none cursor-pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .button_secondary:hover {
             @apply bg-[var(--border-gray)];
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .button_secondary:active {
+            transform: translateY(0);
         }
         .input {
             @apply bg-[var(--white)] border border-[var(--border-gray)] rounded-xl px-4 py-3;
@@ -116,9 +170,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.2s ease;
         }
-        .feature_icon {
-            @apply text-[var(--primary-color)] text-3xl;
-        }
+
         .feature_text {
             @apply text-[var(--text-secondary)];
             line-height: 1.5;
@@ -141,24 +193,164 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         
-        .metric-card {
-            @apply flex items-center gap-2 p-4 bg-[var(--white)] rounded-xl border border-[var(--border-gray)];
-        }
+
         
         .badge {
             @apply px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .badge-success {
             @apply bg-green-100 text-green-800;
         }
+        .badge-success:hover {
+            @apply bg-green-200;
+        }
         
         .badge-info {
             @apply bg-blue-100 text-blue-800;
         }
+        .badge-info:hover {
+            @apply bg-blue-200;
+        }
         
         .badge-warning {
             @apply bg-yellow-100 text-yellow-800;
+        }
+        .badge-warning:hover {
+            @apply bg-yellow-200;
+        }
+        
+        .metric-card {
+            @apply flex items-center gap-4 p-6 bg-[var(--white)] rounded-2xl border border-[var(--border-gray)];
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+        .metric-card .metric-icon {
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .metric-card:hover .metric-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-delayed {
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        .animate-fade-in-delayed-2 {
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        .animate-fade-in-delayed-3 {
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .logo-icon {
+            transition: all 0.3s ease;
+        }
+        .logo-icon:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        .hero-content {
+            animation: heroFadeIn 1s ease-out;
+        }
+        
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .benefit-image {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .benefit-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(139, 92, 246, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .benefit-image:hover {
+            transform: scale(1.03);
+        }
+        .benefit-image:hover::before {
+            opacity: 1;
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -170,17 +362,17 @@
 <div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--border-gray)] px-10 py-4">
 <div class="flex items-center gap-4 text-[var(--text-primary)]">
 <div class="size-8 text-[var(--primary-color)]">
-<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<svg class="w-8 h-8 logo-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-5l-3.75 3.75-1.41-1.41L9.59 12 5.34 7.75l1.41-1.41L10.5 10.59v-5H13v5l3.75-3.75 1.41 1.41L14.41 12l4.25 4.25-1.41 1.41L13 13.41v5h-2.5z"></path>
 </svg>
 </div>
 <h2 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-[-0.015em]">EduFocusAI</h2>
 </div>
 <nav class="hidden md:flex items-center gap-8">
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Início</a>
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Recursos</a>
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Preços</a>
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors" href="#">Contato</a>
+<a class="nav-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors relative" href="#">Início</a>
+<a class="nav-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors relative" href="#">Recursos</a>
+<a class="nav-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors relative" href="#">Preços</a>
+<a class="nav-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-medium leading-normal transition-colors relative" href="#">Contato</a>
 </nav>
 <div class="flex items-center gap-4">
 <button class="button_primary">
@@ -197,12 +389,25 @@
 </header>
 <main class="main-container">
 <section class="relative h-[600px] rounded-3xl overflow-hidden flex items-center justify-center text-center text-white -mt-8">
+<!-- VÍDEO DO HERO - COMO TROCAR:
+     1. Coloque seu vídeo em: assets/videos/seu-video.mp4
+     2. Troque o src abaixo para: ./assets/videos/seu-video.mp4
+     3. Mantenha os atributos: autoplay, loop, muted (para reprodução automática)
+     
+     EXEMPLO COM MÚLTIPLOS FORMATOS:
+     <video autoplay loop muted>
+       <source src="./assets/videos/hero-video.webm" type="video/webm">
+       <source src="./assets/videos/hero-video.mp4" type="video/mp4">
+       <source src="./assets/videos/hero-video.mov" type="video/quicktime">
+       Seu navegador não suporta a tag de vídeo.
+     </video>
+-->
 <video autoplay="" class="absolute z-0 w-auto min-w-full min-h-full max-w-none" loop="" muted="">
-<source src="https://storage.googleapis.com/stitch-assets/videos/people-in-a-library.mp4" type="video/mp4"/>
+<source src="./assets/videos/meu-video.mp4" type="video/mp4"/>
                         Seu navegador não suporta a tag de vídeo.
                     </video>
 <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 hero_overlay"></div>
-<div class="hero_content p-4">
+<div class="hero_content hero-content p-4">
 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 drop-shadow-lg">
                             Aprendizado Personalizado para Cada Estudante
                         </h1>
@@ -227,7 +432,7 @@
                         </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="card text-center items-center flex flex-col">
+<div class="card text-center items-center flex flex-col animate-fade-in">
 <div class="feature_icon mb-4">
 <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"></path></svg>
 </div>
@@ -237,7 +442,7 @@
 </div>
 <p class="feature_text">Adapte rapidamente materiais existentes para diferentes estilos de aprendizagem, reduzindo o tempo de preparação.</p>
 </div>
-<div class="card text-center items-center flex flex-col">
+<div class="card text-center items-center flex flex-col animate-fade-in-delayed">
 <div class="feature_icon mb-4">
 <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg>
 </div>
@@ -247,7 +452,7 @@
 </div>
 <p class="feature_text">Gere questionários e avaliações personalizadas para as necessidades individuais dos estudantes, com feedback instantâneo.</p>
 </div>
-<div class="card text-center items-center flex flex-col">
+<div class="card text-center items-center flex flex-col animate-fade-in-delayed-2">
 <div class="feature_icon mb-4">
 <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176Z"></path></svg>
 </div>
@@ -266,29 +471,29 @@
 <p class="typography_body">Números que demonstram o impacto do EduFocusAI</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-<div class="metric-card">
-<div class="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">85%</div>
+<div class="metric-card animate-fade-in">
+<div class="w-12 h-12 bg-[var(--primary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold metric-icon">85%</div>
 <div>
 <div class="text-xl font-bold text-[var(--text-primary)]">Melhoria</div>
 <div class="text-sm text-[var(--text-secondary)]">no engajamento</div>
 </div>
 </div>
-<div class="metric-card">
-<div class="w-12 h-12 bg-[var(--secondary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">70%</div>
+<div class="metric-card animate-fade-in-delayed">
+<div class="w-12 h-12 bg-[var(--secondary-color)] rounded-full flex items-center justify-center text-white text-xl font-bold metric-icon">70%</div>
 <div>
 <div class="text-xl font-bold text-[var(--text-primary)]">Economia</div>
 <div class="text-sm text-[var(--text-secondary)]">de tempo</div>
 </div>
 </div>
-<div class="metric-card">
-<div class="w-12 h-12 bg-[var(--accent-color)] rounded-full flex items-center justify-center text-white text-xl font-bold">50+</div>
+<div class="metric-card animate-fade-in-delayed-2">
+<div class="w-12 h-12 bg-[var(--accent-color)] rounded-full flex items-center justify-center text-white text-xl font-bold metric-icon">50+</div>
 <div>
 <div class="text-xl font-bold text-[var(--text-primary)]">Escolas</div>
 <div class="text-sm text-[var(--text-secondary)]">utilizando</div>
 </div>
 </div>
-<div class="metric-card">
-<div class="w-12 h-12 bg-[var(--accent-pink)] rounded-full flex items-center justify-center text-white text-xl font-bold">95%</div>
+<div class="metric-card animate-fade-in-delayed-3">
+<div class="w-12 h-12 bg-[var(--accent-pink)] rounded-full flex items-center justify-center text-white text-xl font-bold metric-icon">95%</div>
 <div>
 <div class="text-xl font-bold text-[var(--text-primary)]">Satisfação</div>
 <div class="text-sm text-[var(--text-secondary)]">dos usuários</div>
@@ -306,21 +511,21 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
 <div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgPNipdNk6OZzXXMUyr02S2kAlWft28K5_-xuCqD08RqvcQ-EfvVRh0f7hygIADlO_V2MzykDEH63h6T7rPUHt9dXsnOD2HnKoUSYX88LMbHKg5u8y1oP2BMIO7cf6KFAy3J8Z0TIzU9Bo5UtMyRaJA9y1fvA_Mv-hrJm43xz5BB9QEaYdmljTtixXA5zMs9e9FAXDBGy8VyWK2PlshDalqI3y-jUAxm-cTb2wIxKMNvoii4BgwUJHBjsPIPpA0L27gCOl7pMheE8");'></div>
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl benefit-image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgPNipdNk6OZzXXMUyr02S2kAlWft28K5_-xuCqD08RqvcQ-EfvVRh0f7hygIADlO_V2MzykDEH63h6T7rPUHt9dXsnOD2HnKoUSYX88LMbHKg5u8y1oP2BMIO7cf6KFAy3J8Z0TIzU9Bo5UtMyRaJA9y1fvA_Mv-hrJm43xz5BB9QEaYdmljTtixXA5zMs9e9FAXDBGy8VyWK2PlshDalqI3y-jUAxm-cTb2wIxKMNvoii4BgwUJHBjsPIPpA0L27gCOl7pMheE8");'></div>
 <div>
 <h3 class="text-lg font-bold">Para Professores: Eficiência e Percepção</h3>
 <p class="typography_body mt-1">Reduza a carga de trabalho com ferramentas automatizadas de adaptação de conteúdo e avaliação. Obtenha insights mais profundos sobre o progresso dos estudantes e personalize intervenções de forma eficaz.</p>
 </div>
 </div>
 <div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY6tRQCo6kx8KiaTg9F8-9pAcoiPX06t1Q_Vanu40sEJiM2wpPIojlCDjPxEO9t1kwrXF62YqilQ0ScgtuL4xvpWBN7NYmZDcnQaXX4Cqy8WIwfor3G0hhIJ09NXHcKgEeubyjH0yWyudUoOr2l4QDKHpj9MB1k8rI-vKG3CBjDxS3VxAYxPtGG2AxG5C0LS3LD2oh8b6pJnZhGe0r19W1sF_Xqz0Lqfc2tmXAEwFO2IoAZMWricYzdqQd6aozJV609d-OsYns4H4");'></div>
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl benefit-image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY6tRQCo6kx8KiaTg9F8-9pAcoiPX06t1Q_Vanu40sEJiM2wpPIojlCDjPxEO9t1kwrXF62YqilQ0ScgtuL4xvpWBN7NYmZDcnQaXX4Cqy8WIwfor3G0hhIJ09NXHcKgEeubyjH0yWyudUoOr2l4QDKHpj9MB1k8rI-vKG3CBjDxS3VxAYxPtGG2AxG5C0LS3LD2oh8b6pJnZhGe0r19W1sF_Xqz0Lqfc2tmXAEwFO2IoAZMWricYzdqQd6aozJV609d-OsYns4H4");'></div>
 <div>
 <h3 class="text-lg font-bold">Para Estudantes: Engajamento e Acessibilidade</h3>
 <p class="typography_body mt-1">Crie experiências de aprendizado envolventes e acessíveis que atendam às necessidades diversas. Promova um senso de realização e aumente a confiança dos estudantes.</p>
 </div>
 </div>
 <div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD2nv8fn1DQGzB_OgQ6jPsmbQa9P4IC6VxapXtwA4Bj1H60t_a9qCnlJ74t-gFXaqLLmUwgZi9dETu2_-kQ4E-2vu7Hc2wrFRm8Sh9L-psp8Z3JahCeI7psmuQEolhuZdzyl98rXUlRz-5V_53pDRxDoapGYWJar3ghQ1F2HgqcOuQMj6dz8jll6GLn10lo4eZmlZn7rao-O5L4XByDNzMqwrJBza2MS5Y2z__fqpCjYk05-MWfrok6E_UBg1rQMlPITvIAmCbDQE");'></div>
+<div class="w-full h-48 bg-center bg-no-repeat aspect-video bg-cover rounded-2xl benefit-image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD2nv8fn1DQGzB_OgQ6jPsmbQa9P4IC6VxapXtwA4Bj1H60t_a9qCnlJ74t-gFXaqLLmUwgZi9dETu2_-kQ4E-2vu7Hc2wrFRm8Sh9L-psp8Z3JahCeI7psmuQEolhuZdzyl98rXUlRz-5V_53pDRxDoapGYWJar3ghQ1F2HgqcOuQMj6dz8jll6GLn10lo4eZmlZn7rao-O5L4XByDNzMqwrJBza2MS5Y2z__fqpCjYk05-MWfrok6E_UBg1rQMlPITvIAmCbDQE");'></div>
 <div>
 <h3 class="text-lg font-bold">Para Instituições: Educação Inclusiva</h3>
 <p class="typography_body mt-1">Promova práticas de educação inclusiva e demonstre compromisso com o sucesso dos estudantes. Melhore a reputação institucional e atraia uma gama mais ampla de estudantes.</p>
@@ -342,9 +547,9 @@
 <div class="container mx-auto px-4">
 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
 <div class="flex flex-wrap items-center justify-center gap-6">
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Política de Privacidade</a>
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Termos de Serviço</a>
-<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Fale Conosco</a>
+<a class="footer-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Política de Privacidade</a>
+<a class="footer-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Termos de Serviço</a>
+<a class="footer-link text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-normal leading-normal transition-colors" href="#">Fale Conosco</a>
 </div>
 <p class="text-[var(--text-secondary)] text-sm">© 2024 EduFocusAI. Todos os direitos reservados.</p>
 </div>
@@ -352,5 +557,113 @@
 </footer>
 </div>
 </div>
+
+<script>
+// Adiciona efeito de ripple aos botões
+document.querySelectorAll('.button_primary, .button_secondary').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});
+
+// Animação dos badges ao aparecer na tela
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+        }
+    });
+}, observerOptions);
+
+// Observa os badges para animação
+document.querySelectorAll('.badge').forEach(badge => {
+    observer.observe(badge);
+});
+
+// Efeito de digitação no título principal
+function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Adiciona movimento parallax suave ao hero
+document.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero_section');
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+// Smooth scroll para navegação
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<style>
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.badge {
+    animation-play-state: paused;
+}
+
+.badge:nth-child(1) { animation-delay: 0.1s; }
+.badge:nth-child(2) { animation-delay: 0.2s; }
+.badge:nth-child(3) { animation-delay: 0.3s; }
+</style>
 
 </body></html> 
