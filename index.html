@@ -402,10 +402,35 @@
        Seu navegador não suporta a tag de vídeo.
      </video>
 -->
-<video autoplay="" class="absolute z-0 w-auto min-w-full min-h-full max-w-none" loop="" muted="">
-<source src="./assets/videos/meu-video.mp4" type="video/mp4"/>
-                        Seu navegador não suporta a tag de vídeo.
-                    </video>
+<video 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    preload="metadata"
+    class="absolute z-0 w-auto min-w-full min-h-full max-w-none hero-video"
+    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEduFocusAI%3C/text%3E%3C/svg%3E"
+    onloadstart="this.volume=0"
+    oncanplay="this.muted=true"
+>
+    <source src="./assets/videos/meu-video.mp4" type="video/mp4"/>
+    <!-- Fallback para navegadores que não suportam video -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center">
+        <div class="text-center text-white">
+            <h2 class="text-4xl font-bold mb-2">EduFocusAI</h2>
+            <p class="text-xl">Aprendizado Personalizado para Estudantes com TDAH</p>
+        </div>
+         </div>
+</video>
+
+<!-- Fallback estático para casos extremos -->
+<div class="hero-fallback absolute inset-0 bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center">
+    <div class="text-center text-white">
+        <h2 class="text-4xl font-bold mb-2">EduFocusAI</h2>
+        <p class="text-xl">Aprendizado Personalizado para Estudantes com TDAH</p>
+    </div>
+</div>
+
 <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 hero_overlay"></div>
 <div class="hero_content hero-content p-4">
 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 drop-shadow-lg">
@@ -559,6 +584,72 @@
 </div>
 
 <script>
+// Detecção de mobile e otimização de vídeo
+function initVideoOptimization() {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
+
+    // Detectar dispositivo mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isLowEndDevice = navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2;
+    const isSlowConnection = navigator.connection && (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g');
+
+    // Função para mostrar fallback
+    function showFallback() {
+        const fallbackDiv = document.createElement('div');
+        fallbackDiv.className = 'absolute inset-0 bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center';
+        fallbackDiv.innerHTML = `
+            <div class="text-center text-white">
+                <h2 class="text-4xl font-bold mb-2">EduFocusAI</h2>
+                <p class="text-xl">Aprendizado Personalizado para Estudantes com TDAH</p>
+            </div>
+        `;
+        video.parentNode.insertBefore(fallbackDiv, video);
+        video.style.display = 'none';
+    }
+
+    // Verificar se deve usar fallback
+    if (isLowEndDevice || isSlowConnection) {
+        console.log('Usando fallback devido a: ', { isLowEndDevice, isSlowConnection });
+        showFallback();
+        return;
+    }
+
+    // Configurar vídeo para mobile
+    if (isMobile) {
+        video.setAttribute('playsinline', 'true');
+        video.setAttribute('webkit-playsinline', 'true');
+        video.muted = true;
+        video.volume = 0;
+        
+        // Tentar reproduzir após interação do usuário
+        document.addEventListener('touchstart', function playVideo() {
+            video.play().catch(e => {
+                console.log('Autoplay falhou, usando fallback:', e);
+                showFallback();
+            });
+            document.removeEventListener('touchstart', playVideo);
+        }, { once: true });
+    }
+
+    // Monitorar erros de carregamento
+    video.addEventListener('error', function(e) {
+        console.log('Erro no vídeo:', e);
+        showFallback();
+    });
+
+    // Timeout para fallback se o vídeo não carregar
+    setTimeout(() => {
+        if (video.readyState === 0) {
+            console.log('Vídeo não carregou, usando fallback');
+            showFallback();
+        }
+    }, 5000);
+}
+
+// Inicializar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', initVideoOptimization);
+
 // Adiciona efeito de ripple aos botões
 document.querySelectorAll('.button_primary, .button_secondary').forEach(button => {
     button.addEventListener('click', function(e) {
@@ -661,9 +752,63 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     animation-play-state: paused;
 }
 
-.badge:nth-child(1) { animation-delay: 0.1s; }
-.badge:nth-child(2) { animation-delay: 0.2s; }
-.badge:nth-child(3) { animation-delay: 0.3s; }
-</style>
+        .badge:nth-child(1) { animation-delay: 0.1s; }
+        .badge:nth-child(2) { animation-delay: 0.2s; }
+        .badge:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Otimizações para vídeo mobile */
+        .hero-video {
+            will-change: transform;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        
+        /* Mobile-specific video optimizations */
+        @media (max-width: 768px) {
+            .hero-video {
+                object-fit: cover;
+                object-position: center;
+                -webkit-object-fit: cover;
+                -webkit-object-position: center;
+            }
+            
+            /* Fallback para iOS que não suporta autoplay */
+            @supports (-webkit-overflow-scrolling: touch) {
+                .hero-video {
+                    display: none;
+                }
+                
+                .hero-video + .hero-fallback {
+                    display: block;
+                }
+            }
+        }
+        
+        /* Fallback estático para casos problemáticos */
+        .hero-fallback {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        /* Otimização de performance */
+        .hero-video::-webkit-media-controls {
+            display: none !important;
+        }
+        
+        .hero-video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+        
+        .hero-video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+        
+        .hero-video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+        }
+    </style>
 
 </body></html> 
